@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 14/01/2019 21:58:42
+ Date: 14/01/2019 22:07:17
 */
 
 SET NAMES utf8mb4;
@@ -42,7 +42,13 @@ CREATE TABLE `players`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `xxx_idx`(`team`) USING BTREE,
   CONSTRAINT `xxx` FOREIGN KEY (`team`) REFERENCES `teams` (` team_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of players
+-- ----------------------------
+INSERT INTO `players` VALUES (1, 'James', 23, 1, 34, 203, 27.3, 8.3, 7.1, 1.3, 1.1, 3.4, 34, 4.1, 5, 9, 2003);
+INSERT INTO `players` VALUES (2, 'James Harden', 13, 2, 27, 192, 34.2, 8.8, 6.2, 2.1, 0.6, 5.6, 37.2, 3.4, 13, 13, 2008);
 
 -- ----------------------------
 -- Table structure for teams
