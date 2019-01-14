@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nba.mapper.TeamsMapper">
+  <resultMap id="BaseResultMap" type="com.nba.entity.Teams">
+    <id column="team_id" jdbcType="INTEGER" property="teamId" />
+    <result column="team_name" jdbcType="VARCHAR" property="teamName" />
+    <result column="team_win" jdbcType="INTEGER" property="teamWin" />
+    <result column="team_lose" jdbcType="INTEGER" property="teamLose" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="team_boss" jdbcType="VARCHAR" property="teamBoss" />
+    <result column="ranking" jdbcType="INTEGER" property="ranking" />
+    <result column="team_area" jdbcType="VARCHAR" property="teamArea" />
+    <result column="team_city" jdbcType="VARCHAR" property="teamCity" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from teams
+    where team_id = #{teamId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nba.entity.Teams">
+    insert into teams (team_id, team_name, team_win, 
+      team_lose, create_time, team_boss, 
+      ranking, team_area, team_city
+      )
+    values (#{teamId,jdbcType=INTEGER}, #{teamName,jdbcType=VARCHAR}, #{teamWin,jdbcType=INTEGER}, 
+      #{teamLose,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{teamBoss,jdbcType=VARCHAR}, 
+      #{ranking,jdbcType=INTEGER}, #{teamArea,jdbcType=VARCHAR}, #{teamCity,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nba.entity.Teams">
+    update teams
+    set team_name = #{teamName,jdbcType=VARCHAR},
+      team_win = #{teamWin,jdbcType=INTEGER},
+      team_lose = #{teamLose,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      team_boss = #{teamBoss,jdbcType=VARCHAR},
+      ranking = #{ranking,jdbcType=INTEGER},
+      team_area = #{teamArea,jdbcType=VARCHAR},
+      team_city = #{teamCity,jdbcType=VARCHAR}
+    where team_id = #{teamId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select team_id, team_name, team_win, team_lose, create_time, team_boss, ranking, 
+    team_area, team_city
+    from teams
+    where team_id = #{teamId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select team_id, team_name, team_win, team_lose, create_time, team_boss, ranking, 
+    team_area, team_city
+    from teams
+  </select>
+</mapper>
