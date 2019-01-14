@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nba.mapper.PlayersMapper">
+  <resultMap id="BaseResultMap" type="com.nba.entity.Players">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="team" jdbcType="INTEGER" property="team" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="height" jdbcType="REAL" property="height" />
+    <result column="score" jdbcType="REAL" property="score" />
+    <result column="assist" jdbcType="REAL" property="assist" />
+    <result column="rebound" jdbcType="REAL" property="rebound" />
+    <result column="steal" jdbcType="REAL" property="steal" />
+    <result column="block" jdbcType="REAL" property="block" />
+    <result column="miss" jdbcType="REAL" property="miss" />
+    <result column="play_time" jdbcType="REAL" property="playTime" />
+    <result column="illegal" jdbcType="REAL" property="illegal" />
+    <result column="three_point" jdbcType="REAL" property="threePoint" />
+    <result column="penalty" jdbcType="REAL" property="penalty" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from players
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nba.entity.Players">
+    insert into players (id, name, number, 
+      team, age, height, score, 
+      assist, rebound, steal, block, 
+      miss, play_time, illegal, three_point, 
+      penalty)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
+      #{team,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{height,jdbcType=REAL}, #{score,jdbcType=REAL}, 
+      #{assist,jdbcType=REAL}, #{rebound,jdbcType=REAL}, #{steal,jdbcType=REAL}, #{block,jdbcType=REAL}, 
+      #{miss,jdbcType=REAL}, #{playTime,jdbcType=REAL}, #{illegal,jdbcType=REAL}, #{threePoint,jdbcType=REAL}, 
+      #{penalty,jdbcType=REAL})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nba.entity.Players">
+    update players
+    set name = #{name,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      team = #{team,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      height = #{height,jdbcType=REAL},
+      score = #{score,jdbcType=REAL},
+      assist = #{assist,jdbcType=REAL},
+      rebound = #{rebound,jdbcType=REAL},
+      steal = #{steal,jdbcType=REAL},
+      block = #{block,jdbcType=REAL},
+      miss = #{miss,jdbcType=REAL},
+      play_time = #{playTime,jdbcType=REAL},
+      illegal = #{illegal,jdbcType=REAL},
+      three_point = #{threePoint,jdbcType=REAL},
+      penalty = #{penalty,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, number, team, age, height, score, assist, rebound, steal, block, 
+    miss, play_time, illegal, three_point, penalty
+    from players
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, number, team, age, height, score, assist, rebound, steal, block, 
+    miss, play_time, illegal, three_point, penalty
+    from players
+  </select>
+</mapper>
