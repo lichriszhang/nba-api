@@ -20,4 +20,9 @@ public class TeamsServiceImpl implements TeamsService {
 		return teamsMapper.selectAll();
 	}
 
+	@Override
+	public Teams getTeamById(Integer teamId) {
+		return teamsMapper.selectByPrimaryKey(teamId);
+	}
+
 }
