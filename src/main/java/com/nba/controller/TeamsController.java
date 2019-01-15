@@ -2,10 +2,9 @@ package com.nba.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +23,8 @@ public class TeamsController {
 		return teamsService.getAllTeams();
 	}
 	
-	@GetMapping("team")
-	public Teams getTeamById(@PathParam(value="teamId") Integer teamId) {
+	@GetMapping("/{teamId}")
+	public Teams getTeamById(@PathVariable(name="teamId") Integer teamId) {
 		return teamsService.getTeamById(teamId);
 	}
 

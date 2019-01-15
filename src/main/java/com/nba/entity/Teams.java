@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Setter
 @ToString
 public class Teams {
-    private Integer teamId;
+    private Integer id;
 
     private String teamName;
 

@@ -18,6 +18,7 @@
     <result column="illegal" jdbcType="REAL" property="illegal" />
     <result column="three_point" jdbcType="REAL" property="threePoint" />
     <result column="penalty" jdbcType="REAL" property="penalty" />
+    <result column="players_year" jdbcType="DATE" property="playersYear" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from players
@@ -28,12 +29,12 @@
       team, age, height, score, 
       assist, rebound, steal, block, 
       miss, play_time, illegal, three_point, 
-      penalty)
+      penalty, players_year)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
       #{team,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{height,jdbcType=REAL}, #{score,jdbcType=REAL}, 
       #{assist,jdbcType=REAL}, #{rebound,jdbcType=REAL}, #{steal,jdbcType=REAL}, #{block,jdbcType=REAL}, 
       #{miss,jdbcType=REAL}, #{playTime,jdbcType=REAL}, #{illegal,jdbcType=REAL}, #{threePoint,jdbcType=REAL}, 
-      #{penalty,jdbcType=REAL})
+      #{penalty,jdbcType=REAL}, #{playersYear,jdbcType=DATE})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.nba.entity.Players">
     update players
@@ -51,18 +52,19 @@
       play_time = #{playTime,jdbcType=REAL},
       illegal = #{illegal,jdbcType=REAL},
       three_point = #{threePoint,jdbcType=REAL},
-      penalty = #{penalty,jdbcType=REAL}
+      penalty = #{penalty,jdbcType=REAL},
+      players_year = #{playersYear,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, name, number, team, age, height, score, assist, rebound, steal, block, 
-    miss, play_time, illegal, three_point, penalty
+    miss, play_time, illegal, three_point, penalty, players_year
     from players
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, number, team, age, height, score, assist, rebound, steal, block, 
-    miss, play_time, illegal, three_point, penalty
+    miss, play_time, illegal, three_point, penalty, players_year
     from players
   </select>
 </mapper>
