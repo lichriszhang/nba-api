@@ -27,5 +27,20 @@ public class TeamsController {
 	public Teams getTeamById(@PathVariable(name="teamId") Integer teamId) {
 		return teamsService.getTeamById(teamId);
 	}
+	
+	@GetMapping("/westtop")
+	public List<Teams> getWestTop() {
+		return teamsService.getWestTopTeams();
+	}
+	
+	@GetMapping("/easttop")
+	public List<Teams> getEastTop() {
+		return teamsService.getEastTopTeams();
+	}
+	
+	@GetMapping("/area/{area}")
+	public List<Teams> getTeamsByArea(@PathVariable(name="area") String area) {
+		return teamsService.getTeamsByArea(area);
+	}
 
 }

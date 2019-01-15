@@ -9,5 +9,11 @@ public interface TeamsService {
 	public List<Teams> getAllTeams();
 	
 	public Teams getTeamById(Integer teamId);
+	
+	List<Teams> getTeamsByArea(String area);
+	
+	List<Teams> getEastTopTeams();
+	
+	List<Teams> getWestTopTeams();
 
 }

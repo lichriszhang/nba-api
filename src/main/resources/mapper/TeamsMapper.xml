@@ -51,4 +51,22 @@
     team_area, team_logo
     from teams
   </select>
+  <select id="selectByArea" resultMap="BaseResultMap">
+    select id, team_name, team_win, team_lose, create_date, team_boss, ranking, team_city, 
+    team_area, team_logo
+    from teams
+    where team_area = #{area,jdbcType=VARCHAR}
+  </select>
+  <select id="selectWestTop" resultMap="BaseResultMap">
+    select id, team_name, team_win, team_lose, create_date, team_boss, ranking, team_city, 
+    team_area, team_logo
+    from teams
+    where team_area = 'west' order by ranking limit #{topCount,jdbcType=INTEGER}
+    </select>
+    <select id="selectEastTop" resultMap="BaseResultMap">
+    select id, team_name, team_win, team_lose, create_date, team_boss, ranking, team_city, 
+    team_area, team_logo
+    from teams
+    where team_area = 'east' order by ranking limit #{topCount,jdbcType=INTEGER}
+    </select>
 </mapper>
