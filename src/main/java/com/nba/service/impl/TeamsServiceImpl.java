@@ -44,4 +44,15 @@ public class TeamsServiceImpl implements TeamsService {
 		return teamsMapper.selectWestTop(topCount);
 	}
 
+	@Override
+	public boolean updateTeams(Teams team) {
+		try {
+			teamsMapper.updateByPrimaryKey(team);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

@@ -49,7 +49,7 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select id, team_name, team_win, team_lose, create_date, team_boss, ranking, team_city, 
     team_area, team_logo
-    from teams
+    from teams order by ranking
   </select>
   <select id="selectByArea" resultMap="BaseResultMap">
     select id, team_name, team_win, team_lose, create_date, team_boss, ranking, team_city, 

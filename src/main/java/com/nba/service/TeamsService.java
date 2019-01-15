@@ -15,5 +15,7 @@ public interface TeamsService {
 	List<Teams> getEastTopTeams();
 	
 	List<Teams> getWestTopTeams();
+	
+	boolean updateTeams(Teams team);
 
 }
