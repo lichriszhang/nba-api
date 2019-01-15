@@ -1,7 +1,10 @@
 package com.nba.mapper;
 
-import com.nba.entity.Players;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.nba.entity.Players;
 
 public interface PlayersMapper {
     int deleteByPrimaryKey(Integer id);
@@ -11,6 +14,8 @@ public interface PlayersMapper {
     Players selectByPrimaryKey(Integer id);
 
     List<Players> selectAll();
+    
+    List<Players> selectByTeam(@Param(value="teamId") Integer teamId);
 
     int updateByPrimaryKey(Players record);
 }

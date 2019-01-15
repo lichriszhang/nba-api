@@ -62,6 +62,12 @@
     from players
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByTeam" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, number, team, age, height, score, assist, rebound, steal, block, 
+    miss, play_time, illegal, three_point, penalty, players_year
+    from players
+    where team = #{teamId,jdbcType=INTEGER}
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, number, team, age, height, score, assist, rebound, steal, block, 
     miss, play_time, illegal, three_point, penalty, players_year
