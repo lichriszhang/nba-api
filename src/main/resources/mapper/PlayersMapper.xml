@@ -66,7 +66,7 @@
     select id, name, number, team, age, height, score, assist, rebound, steal, block, 
     miss, play_time, illegal, three_point, penalty, players_year
     from players
-    where team = #{teamId,jdbcType=INTEGER}
+    where team = #{teamId,jdbcType=INTEGER} order by score desc
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, number, team, age, height, score, assist, rebound, steal, block, 
