@@ -12,4 +12,8 @@ public interface PlayersService {
 	
 	List<Players> getPlayersByTeam(Integer teamId);
 	
+	boolean updatePlayer(Players player);
+	
+	boolean addPlayer(Players player);
+	
 }

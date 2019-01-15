@@ -30,4 +30,16 @@ public class PlayersServiceImpl implements PlayersService {
 		return playersMapper.selectByTeam(teamId);
 	}
 
+	@Override
+	public boolean updatePlayer(Players player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addPlayer(Players player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
