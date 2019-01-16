@@ -22,6 +22,8 @@ public class Players {
     private Integer number;
 
     private Integer team;
+    
+    private String teamName;
 
     private Integer age;
 
@@ -48,5 +50,7 @@ public class Players {
     private Float penalty;
 
     private LocalDateTime playersYear;
+    
+    private String image;
 
 }

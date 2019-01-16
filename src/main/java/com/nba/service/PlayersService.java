@@ -16,4 +16,6 @@ public interface PlayersService {
 	
 	boolean addPlayer(Players player);
 	
+	Players getPlayerByNumbAndTeam(Integer number, Integer team);
+	
 }

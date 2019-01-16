@@ -31,4 +31,12 @@ public class PlayersController {
 	public List<Players> getPlayersByTeam(@PathVariable(value="teamId") Integer teamId) {
 		return playersService.getPlayersByTeam(teamId);
 	}
+	
+	@GetMapping("/number/{playerNumber}/{teamId}")
+	public Players getPlayerByNumAndTeam(
+			@PathVariable(value="playerNumber") Integer number, 
+			@PathVariable(value="teamId") Integer teamId
+			) {
+		return playersService.getPlayerByNumbAndTeam(number, teamId);
+	}
 }

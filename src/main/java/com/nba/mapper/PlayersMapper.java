@@ -18,4 +18,6 @@ public interface PlayersMapper {
     List<Players> selectByTeam(@Param(value="teamId") Integer teamId);
 
     int updateByPrimaryKey(Players record);
+    
+    Players selectPlayerByNumbAndTeam(@Param(value="playerNumber") Integer number, @Param(value="teamId") Integer team);
 }

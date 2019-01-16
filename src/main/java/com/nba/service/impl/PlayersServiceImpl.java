@@ -32,14 +32,29 @@ public class PlayersServiceImpl implements PlayersService {
 
 	@Override
 	public boolean updatePlayer(Players player) {
-		// TODO Auto-generated method stub
+		try {
+			playersMapper.updateByPrimaryKey(player);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean addPlayer(Players player) {
-		// TODO Auto-generated method stub
+		try {
+			playersMapper.insert(player);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
+	}
+
+	@Override
+	public Players getPlayerByNumbAndTeam(Integer number, Integer team) {
+		return playersMapper.selectPlayerByNumbAndTeam(number, team);
 	}
 
 }

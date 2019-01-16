@@ -19,6 +19,7 @@
     <result column="three_point" jdbcType="REAL" property="threePoint" />
     <result column="penalty" jdbcType="REAL" property="penalty" />
     <result column="players_year" jdbcType="DATE" property="playersYear" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from players
@@ -29,12 +30,12 @@
       team, age, height, score, 
       assist, rebound, steal, block, 
       miss, play_time, illegal, three_point, 
-      penalty, players_year)
+      penalty, players_year, image)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
       #{team,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{height,jdbcType=REAL}, #{score,jdbcType=REAL}, 
       #{assist,jdbcType=REAL}, #{rebound,jdbcType=REAL}, #{steal,jdbcType=REAL}, #{block,jdbcType=REAL}, 
       #{miss,jdbcType=REAL}, #{playTime,jdbcType=REAL}, #{illegal,jdbcType=REAL}, #{threePoint,jdbcType=REAL}, 
-      #{penalty,jdbcType=REAL}, #{playersYear,jdbcType=DATE})
+      #{penalty,jdbcType=REAL}, #{playersYear,jdbcType=DATE}, #{image,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.nba.entity.Players">
     update players
@@ -53,24 +54,31 @@
       illegal = #{illegal,jdbcType=REAL},
       three_point = #{threePoint,jdbcType=REAL},
       penalty = #{penalty,jdbcType=REAL},
-      players_year = #{playersYear,jdbcType=DATE}
+      players_year = #{playersYear,jdbcType=DATE},
+      image = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, name, number, team, age, height, score, assist, rebound, steal, block, 
-    miss, play_time, illegal, three_point, penalty, players_year
+    miss, play_time, illegal, three_point, penalty, players_year, image
     from players
-    where id = #{id,jdbcType=INTEGER}
+    where players.id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByTeam" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, number, team, age, height, score, assist, rebound, steal, block, 
-    miss, play_time, illegal, three_point, penalty, players_year
-    from players
+  <select id="selectByTeam" parameterType="java.lang.Integer" resultType="com.nba.entity.Players">
+    select players.id, name, team_name as teamName, number, team, age, height, score, assist, rebound, steal, block, 
+    miss, play_time as playTime, illegal, three_point as threePoint, penalty, players_year as playersYear, image
+    from players inner join teams on players.team = teams.id
     where team = #{teamId,jdbcType=INTEGER} order by score desc
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, number, team, age, height, score, assist, rebound, steal, block, 
-    miss, play_time, illegal, three_point, penalty, players_year
-    from players
+  <select id="selectPlayerByNumbAndTeam" parameterType="java.lang.Integer" resultType="com.nba.entity.Players">
+    select players.id, name, team_name as teamName, number, team, age, height, score, assist, rebound, steal, block, 
+    miss, play_time as playTime, illegal, three_point as threePoint, penalty, players_year as playersYear, image
+    from players inner join teams on players.team = teams.id
+    where number = #{playerNumber,jdbcType=INTEGER} and team = #{teamId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultType="com.nba.entity.Players">
+    select players.id, name, team_name as teamName, number, team, age, height, score, assist, rebound, steal, block, 
+    miss, play_time as playTime, illegal, three_point as threePoint, penalty, players_year as playersYear, image
+    from players inner join teams on players.team = teams.id
   </select>
 </mapper>
