@@ -1,0 +1,12 @@
+flask
+requests
+lxml
+pytz
+gunicorn
+Flask-Cache
+flask-redis
+Flask-Script
+jieba
+pypinyin
+beautifulsoup4
+flask-slackbot==0.2.1

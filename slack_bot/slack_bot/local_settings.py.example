@@ -1,0 +1,26 @@
+# coding=utf-8
+
+DEBUG = False
+SECRET_KEY = 'your secert key'
+
+SLACK_CHAT_TOKEN = 'your slack char token'
+SLACK_CALLBACK = 'your slack bot callback uri'
+REDIS_URL = 'redis://localhost:6379/0'
+ORG_NAME = 'your organization slug'
+BAIDU_AK = 'your baidu ak'
+SIMSIMI_KEY = 'your simsimi key'
+
+CACHE_TYPE = 'simple'
+
+TEST_DATA = {
+    'token': 'token',
+    'text': 'text',
+    'team_id': 'team_id',
+    'team_domain': 'team_domain',
+    'channel_id': 'channel_id',
+    'channel_name': 'channel_name',
+    'timestamp': 'timestamp',
+    'user_id': 'user_id',
+    'user_name': 'user_name',
+    'trigger_word': 'trigger_word',
+}
